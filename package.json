@@ -1,0 +1,22 @@
+{
+  "name": "football_notify",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dbc": "file:../discord-bot-core",
+    "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
