@@ -95,9 +95,10 @@ export interface Time {
   starting_at: StartingAt;
   minute: number;
   second: null | string;
-  added_time: null;
-  extra_minute: null;
-  injury_time: null;
+  added_time: number | null;
+  extra_minute: number | null;
+  //90+1
+  injury_time: number | null;
 }
 
 export interface StartingAt {

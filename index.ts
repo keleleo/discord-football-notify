@@ -34,7 +34,7 @@ client.on('ready', async () => {
       });
       //botController.destroyAllSlashCommands(client);
       // await RequestLiveData()
-      startUpdateCreateLoop();
+      // startUpdateCreateLoop();
     })
     .catch((err) => {
       console.log('-----');

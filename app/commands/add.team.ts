@@ -65,7 +65,8 @@ export default {
       _event.emit('AddedTeamToChannel', t);
       return `${find.name} add to ${channel.name}`;
     } else {
-      return `error sorry`;
+      if (res == false) return `error sorry`;
+      return res;
     }
   },
 } as ICommand;

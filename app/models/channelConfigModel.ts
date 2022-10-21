@@ -11,7 +11,7 @@ interface IChannelConfig {
 }
 
 interface IChannelConfigModel extends Model<IChannelConfig> {
-  addTeamToChannel: (team: ITeamNotify) => Promise<boolean>;
+  addTeamToChannel: (team: ITeamNotify) => Promise<boolean | string>;
   removeTeamFromChannel: (team: ITeamNotify) => Promise<boolean>;
   getAll: () => Promise<IChannelConfig[] | undefined>;
   /**
@@ -40,8 +40,10 @@ ChannelConfig.addTeamToChannel = async function (team: ITeamNotify) {
       team._id
     );
     if (f != null) {
-      if (f.teams_id.includes(team.team_id) || f.teams_id.length == max_team)
-        return false;
+      if (f.teams_id.includes(team.team_id))
+        return 'team already added.'
+      if(f.teams_id.length == max_team)
+        return 'max team.';
       f.teams_id.push(team.team_id);
 
     } else {
@@ -81,10 +83,9 @@ ChannelConfig.removeTeamFromChannel = async function (team: ITeamNotify) {
     }
 
     if (f.teams_id.indexOf(team.team_id) == -1) return false;
-    console.log(team.team_id)
-    console.log(f.teams_id)
+
     f.teams_id.splice(f.teams_id.indexOf(team.team_id));
-    console.log(f.teams_id)
+
 
     await this.findOneAndUpdate(
       {
